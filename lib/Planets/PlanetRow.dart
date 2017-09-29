@@ -9,6 +9,7 @@ class PlanetRow extends StatelessWidget {
         horizontal: 24.0,
       ),
       child: new Stack(
+        alignment: FractionalOffset.center,
         children: <Widget>[
           planetCard,
           planetThumbnail,
@@ -28,7 +29,7 @@ class PlanetRow extends StatelessWidget {
   );
 
   final planetCard = new Container(
-    height: 124.0,
+    height: 304.0,
     margin: new EdgeInsets.only(left: 46.0),
     decoration: new BoxDecoration(
       color: new Color(0xFF333366),

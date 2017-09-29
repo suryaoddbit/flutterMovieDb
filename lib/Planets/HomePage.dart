@@ -10,21 +10,20 @@ class HomePageGradient extends StatelessWidget {
         child: new Column(
           children: <Widget>[
             new GradientAppBar("Trevo"),
-            new Expanded(child:
-            new SingleChildScrollView(
-              child:  new Column(
-                children: <Widget>[
-                  new HomePageBody(),
-                  new HomePageBody(),
-                  new HomePageBody(),
-                  new HomePageBody(),
-                  new HomePageBody(),
-                  new HomePageBody(),
-                ],
+            new Expanded(
+              child: new SingleChildScrollView(
+                child: new Column(
+                  children: <Widget>[
+                    new HomePageBody(),
+                    new HomePageBody(),
+                    new HomePageBody(),
+                    new HomePageBody(),
+                    new HomePageBody(),
+                    new HomePageBody(),
+                  ],
+                ),
               ),
             ),
-            ),
-
           ],
         ),
       ),

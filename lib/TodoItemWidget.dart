@@ -70,12 +70,29 @@ class _TodoItemWidgetState extends State<TodoItemWidget> {
       ),
     );*/
     Widget _PosterImg = new Container(
-      margin: const EdgeInsets.only(right: 16.0),
-      child: new Image.network(
-        "https://image.tmdb.org/t/p/w500/" + widget.todo.image,
-        scale: 5.0,
-        width: 100.0,
+      width: 82.0,
+      height: 120.0,
+      decoration: new BoxDecoration(
+        color: CustomGreen,
+        shape: BoxShape.rectangle,
+        borderRadius: new BorderRadius.circular(8.0),
+        boxShadow: <BoxShadow>[
+          new BoxShadow(
+            color: Colors.black12,
+            blurRadius: 10.0,
+            offset: new Offset(0.0, 10.0),
+          ),
+        ],
       ),
+      margin: const EdgeInsets.only(right: 16.0, bottom: 4.0),
+      child: new Container(
+        margin: const EdgeInsets.all(3.5),
+        child: new Image.network(
+          "https://image.tmdb.org/t/p/w500/" + widget.todo.image,
+
+          //scale: 5.0,
+        ),
+      )
     );
 
     Widget _TitleLb = new Container(
@@ -84,17 +101,22 @@ class _TodoItemWidgetState extends State<TodoItemWidget> {
     );
 
     Widget _DateLb = new Container(
-      margin: const EdgeInsets.only(top: 10.0, bottom: 5.0),
-      child: new Text("(" + widget.todo.date + ")", style: Theme.of(context).textTheme.subhead),
+      margin: const EdgeInsets.only(top: 10.0, bottom: 5.0, left: 70.0),
+      child: new Text("(" + widget.todo.date + ")",
+          style: Theme.of(context).textTheme.subhead),
     );
     Widget _DescripLb = new Container(
-      child: new Text(widget.todo.body,
-           textAlign: TextAlign.justify,
-           //style: Theme.of(context).textTheme.subhead
+      margin: const EdgeInsets.only(left: 70.0),
+      child: new Text(
+        widget.todo.body,
+        textAlign: TextAlign.justify,
+        maxLines: 3,
+
+        //style: Theme.of(context).textTheme.subhead
       ),
     );
     Widget _RatingView = new Container(
-      margin: const EdgeInsets.only(top: 15.0, bottom: 5.0),
+      margin: const EdgeInsets.only(top: 15.0, bottom: 5.0, left: 70.0),
       child: new Row(
         children: <Widget>[
           new Icon(Icons.star, color: Colors.yellow[700], size: 22.0),
@@ -109,32 +131,39 @@ class _TodoItemWidgetState extends State<TodoItemWidget> {
     return new GestureDetector(
       onTap: _onTap,
       child: new Container(
-        margin: const EdgeInsets.symmetric(
-          vertical: 16.0,
-          horizontal: 24.0,
+        margin: const EdgeInsets.only(
+            left: 10.0,right: 10.0,top: 10.0
         ),
         child: new Stack(
+          alignment: FractionalOffset.bottomLeft,
           children: <Widget>[
-          new Card(
-            child: new Container(
-              margin: const EdgeInsets.all(5.0),
-              child: new GestureDetector(
-                child: new Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    _PosterImg,
-                    new Expanded(
-                        child: new Column(
+            new Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: new Card(
+                child: new Container(
+                  margin: const EdgeInsets.all(5.0),
+                  child: new GestureDetector(
+                    child: new Row(
+                      children: <Widget>[
+                        //_PosterImg,
+                        new Expanded(
+                            child: new Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[_TitleLb, _DateLb, _DescripLb, _RatingView],
-                        )
+                          children: <Widget>[
+                            _TitleLb,
+                            _DateLb,
+                            _DescripLb,
+                            _RatingView
+                          ],
+                        )),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
-          ),
-            planetThumbnail,
+            _PosterImg
+
           ],
         ),
       ),
@@ -161,7 +190,7 @@ class _TodoItemWidgetState extends State<TodoItemWidget> {
 
   final planetCard = new Container(
     height: 124.0,
-    margin: new EdgeInsets.only(left: 46.0),
+    //margin: new EdgeInsets.only(left: 46.0),
     decoration: new BoxDecoration(
       color: new Color(0xFF333366),
       shape: BoxShape.rectangle,
@@ -175,6 +204,4 @@ class _TodoItemWidgetState extends State<TodoItemWidget> {
       ],
     ),
   );
-
-
 }
